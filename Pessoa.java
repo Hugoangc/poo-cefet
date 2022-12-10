@@ -1,8 +1,12 @@
+import java.util.InputMismatchException;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+
 public abstract class Pessoa {
     private String nome;
     private String CPF;
 
-    protected Pessoa(String nome, Sring CPF) {
+    protected Pessoa(String nome, String CPF) {
         if (!isValidUsername(nome)) this.nome = null;
         else if (!isCPF(CPF)) this.CPF = null;
         else {
@@ -52,26 +56,20 @@ public abstract class Pessoa {
                 dig11 = '0';
             else dig11 = (char) (r + 48);
 
-            if ((dig10 == CPF.charAt(9)) && (dig11 == CPF.charAt(10)))
-                return (true);
-            else return (false);
+            return (dig10 == CPF.charAt(9)) && (dig11 == CPF.charAt(10));
         } catch (InputMismatchException erro) {
             return (false);
         }
     }
-
-
+    
     public static boolean isValidUsername(String name) {
         String regex = "^[A-Za-z]\\w{5,29}$";
         Pattern p = Pattern.compile(regex);
-
         if (name == null) {
             return false;
         }
-
         Matcher m = p.matcher(name);
-
-        return m.matches();
+        return ((Matcher) m).matches();
     }
 
     public String getNome() {
@@ -85,16 +83,5 @@ public abstract class Pessoa {
     }
     public void setCPF(String CPF) {
         this.CPF = CPF;
-    }
-    public String getEmail() {
-        return email;
-    }
-    public void setEmail(String email) {
-        this.email = email;
-    }
-    public void imprimirPessoa(){
-        imprimeCPF(CPF);
-        System.out.println(getNome());
-        System.out.println(getEmail());
     }
 }

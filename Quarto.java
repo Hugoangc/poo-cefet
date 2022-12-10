@@ -1,35 +1,38 @@
+import java.util.ArrayList;
+import java.util.Date;
+
 public class Quarto {
-    private int numeroHospedes;
-    private String tipoQuarto;
-    private ArrayList<Date> uso; // dias que o quarto está ocupado
+    private int numberOfGuests;
+    private int typeOfRoom;
+    private static final ArrayList<Date> vacancy = new ArrayList<>(); // dias que o quarto está ocupado
 
-    public Quarto(int numeroHospedes, String tipoQuarto) {
-        this.numeroHospedes = numeroHospedes;
-        this.tipoQuarto = tipoQuarto;
+    public Quarto(int numberOfGuests, int typeOfRoom, ArrayList<Date> vacancy) {
+        this.numberOfGuests = numberOfGuests;
+        this.typeOfRoom = typeOfRoom;
     }
 
-    private static criarQuarto(int numeroHospedes) {
-        if (numeroHospedes == 2) tipoQuarto = "Casal";
-        tipoQuarto = "Solteiro";
+    // todo
+    private boolean createRoom(int numberOfGuests) {
+        return false;
     }
 
-    public boolean isAvaiable(Date d) {
-        for (int i = 0; i < uso.size(); i++) {
-            if (d.compareTo(uso.at(i)) == 0) return false;
+    public boolean isAvailable(Date d) {
+        for (Date date : vacancy) {
+            if (d.compareTo(date) == 0) return false;
         }
         return true;
     }
 
-    public int getnumeroHospedes() {
-        return numeroHospedes;
+    public int getnumberOfGuests() {
+        return numberOfGuests;
     }
-    public void setnumeroHospedes(int numeroHospedes) {
-        this.numeroHospedes = numeroHospedes;
+    public void setnumberOfGuests(int numberOfGuests) {
+        this.numberOfGuests = numberOfGuests;
     }
-    public String gettipoQuarto() {
-        return tipoQuarto;
+    public int gettypeOfRoom() {
+        return typeOfRoom;
     }
-    public void settipoQuarto(String tipoQuarto) {
-        this.tipoQuarto = tipoQuarto;
+    public void settypeOfRoom(int typeOfRoom) {
+        this.typeOfRoom = typeOfRoom;
     }
 }
