@@ -11,14 +11,13 @@ public class Reserva {
         this.numberOfGuests = numberOfGuests;
     }
 
-    public static boolean makeReserva(Quarto q, Date d, int numberOfGuests) {
-        if (q.getnumberOfGuests() >= numberOfGuests + 1) {
-            if (q.isAvailable(d)) {
+    public static void makeReserve(Quarto q, Date d, int numberOfGuests) {
+        if (q.getNumberOfGuests() >= numberOfGuests + 1) {
+            if (Quarto.isAvailable(d)) {
                 Reserva r = new Reserva(q, d, numberOfGuests);
-                return true;
+                Quarto.getVacancy().add(d);
             }
         }
-        return false;
     }
 
     public Date getData() {
