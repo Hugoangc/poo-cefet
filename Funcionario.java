@@ -3,7 +3,6 @@ public class Funcionario extends Pessoa {
 
     public Funcionario(String nome, String CPF, String senha){
         super(nome, CPF);
-        this.senha = senha;
     }
 
     public Funcionario(String nome, String CPF) {
