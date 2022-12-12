@@ -1,6 +1,3 @@
-
-package poo_final;
-
 import java.util.ArrayList;
 import java.util.Scanner;
 
