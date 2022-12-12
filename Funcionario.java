@@ -1,57 +1,13 @@
-import java.util.ArrayList;
-import java.util.Scanner;
+/*
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
+ */
+package poo_final;
 
-public class Funcionario extends Pessoa {
-    private String keyword;
-    private boolean isManager;
-    private double salario;
-    private static final ArrayList<Funcionario> login = new ArrayList<>();
-
-    public Funcionario(String nome, String CPF, double salario, String keyword){
-        super(nome, CPF);
-        if(salario >= 0) this.salario = salario;
-        else this.salario = 0;
-        setKeyword(keyword);
-        isManager = true;
-    }
-
-    public Funcionario(String nome, String CPF) {
-        super(nome, CPF);
-    }
-
-    public boolean promote(Funcionario f) {
-        if (!getIsManager()) return false;
-        Scanner input = new Scanner(System.in);
-        System.out.println("Digite a nova senha para o funcionario: ");
-        String keyword = input.next();
-        this.setKeyword(keyword);
-        //f.setIsManager(true);
-        login.add(f);
-        return true;
-    }
-
-    public double getSalario() {
-        return salario;
-    }
-
-    public boolean setSalario(double salario) {
-        if(isManager) {
-            this.salario = salario;
-            return true;
-        }
-        else return false;
-    }
-
-    public String getKeyword() {
-        return keyword;
-    }
-    public void setKeyword(String keyword) {
-        this.keyword = keyword;
-    }
-    public boolean getIsManager() {
-        return isManager;
-    }
-    public void setIsManager(boolean isManager) {
-        this.isManager = isManager;
-    }
+/**
+ *
+ * @author hugo1
+ */
+public class Funcionario {
+    
 }
