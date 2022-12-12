@@ -1,5 +1,3 @@
-package hotelpoo2;
-
 import java.util.ArrayList;
 import java.util.Scanner;
 
@@ -25,7 +23,7 @@ public class Funcionario extends Pessoa {
         if (!getIsManager()) return false;
         Scanner input = new Scanner(System.in);
         System.out.println("Digite a nova senha para o funcionario: ");
-        String keyword = input.nextLine();
+        String keyword = input.next();
         this.setKeyword(keyword);
         //f.setIsManager(true);
         login.add(f);
