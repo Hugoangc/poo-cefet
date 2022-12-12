@@ -29,12 +29,16 @@ public class Main {
                     Scanner input = new Scanner(System.in);
                     System.out.println("Digite a quantidade de acompanhantes: ");
                     int guests = input.nextInt();
+                    input.nextLine();
                     System.out.println("Digite o ano desejado: ");
                     int ano = input.nextInt();
+                    input.nextLine();
                     System.out.println("Digite o mes desejado: ");
                     int mes = input.nextInt();
+                    input.nextLine();
                     System.out.println("Digite o dia desejado: ");
                     int dia = input.nextInt();
+                    input.nextLine();
                     Date d = new Date(ano, mes, dia);
                     if (Quarto.isAvailable(d)) {
                         Reserva.makeReserve(Quarto.createRoom(guests), d, guests);
@@ -52,9 +56,9 @@ public class Main {
                     System.out.print("\nOpção 'Registrar Hospede' Selecionado\n");
                     Scanner input = new Scanner(System.in);
                     System.out.print("Entre com o Nome: \n");
-                    String name = input.next();
+                    String name = input.nextLine();
                     System.out.print("Entre com o CPF: \n");
-                    String cpf = input.next();
+                    String cpf = input.nextLine();
                     Hospede.registerGuest(name, cpf);
                 }
                 case 4 -> Quarto.listRooms();
