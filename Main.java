@@ -2,6 +2,7 @@ import java.util.Scanner;
 public class Main {
 
     public static void main(String[] args) {
+        Quarto.createRooms();
         Scanner menu = new Scanner(System.in);
         while (true) {
             System.out.print("##------------Menu-------------##\n");
