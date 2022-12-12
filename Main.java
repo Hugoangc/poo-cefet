@@ -34,7 +34,13 @@ public class Main {
                     input.nextLine();
                     Quarto q = Quarto.searchRooms(guests);
                     if (q == null) { System.out.println("Indisponivel!\n"); }
-                    else { Reserva.makeReserve(q,guests); }
+                    else {
+                        int value = days * 50 + 25 * guests;
+                        System.out.print("Valor total: ");
+                        System.out.println(value);
+                        Reserva.makeReserve(q,guests);
+                        System.out.println("Reserva efetuada");
+                    }
                 }
                 case 2 -> {
                     System.out.print("\nOpção 'Listar Hospedes' Selecionado\n");

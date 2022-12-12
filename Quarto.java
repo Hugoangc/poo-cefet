@@ -45,6 +45,7 @@ public class Quarto {
             System.out.println("Quarto: " + room.roomNumber);
             System.out.println("Capacidade do Quarto: " + room.numberOfGuests+" hospedes");
         }
+        System.out.println("\n");
     }
 
     public boolean isVacancy() {
