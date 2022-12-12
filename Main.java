@@ -2,7 +2,7 @@ import java.util.Date;
 import java.util.Scanner;
 
 
-public class POO_Final {
+public class Main {
 
     public static void main(String[] args) {
         Scanner menu = new Scanner(System.in);
