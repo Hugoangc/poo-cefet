@@ -54,6 +54,10 @@ public class Main {
                     String name = input.nextLine();
                     System.out.print("Entre com o CPF: \n");
                     String cpf = input.nextLine();
+                    while (!Pessoa.isCPF(cpf)) {
+                        System.out.print("Entre com um CPF válido: \n");
+                        cpf = input.next();
+                    }
                     Hospede.registerGuest(name, cpf);
                 }
                 case 4 ->
