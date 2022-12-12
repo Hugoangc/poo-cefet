@@ -25,7 +25,7 @@ public class Funcionario extends Pessoa {
         if (!getIsManager()) return false;
         Scanner input = new Scanner(System.in);
         System.out.println("Digite a nova senha para o funcionario: ");
-        String keyword = input.next();
+        String keyword = input.nextLine();
         this.setKeyword(keyword);
         //f.setIsManager(true);
         login.add(f);
