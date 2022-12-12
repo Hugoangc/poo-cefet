@@ -1,6 +1,6 @@
 import java.util.Scanner;
-
 public class Main {
+
     public static void main(String[] args) {
         Scanner menu = new Scanner(System.in);
         while (true) {
@@ -20,7 +20,6 @@ public class Main {
 
             if (option == 0) {
                 System.out.print("\nAté logo!\n");
-                menu.close();
                 break;
             }
 
@@ -55,7 +54,6 @@ public class Main {
                     String name = input.nextLine();
                     System.out.print("Entre com o CPF: \n");
                     String cpf = input.nextLine();
-                    input.close();
                     Hospede.registerGuest(name, cpf);
                 }
                 case 4 ->
@@ -73,6 +71,7 @@ public class Main {
                     }
                     System.out.print("|-------------------------------|\n");                    
                     System.out.print("| Opção 1 - Mudar senha         |\n");
+                    System.out.print("| Opção 2 - Criar Quarto        |\n");
                     System.out.print("| Opção 0 - Sair                |\n");
                     System.out.print("|-------------------------------|\n");
                     int gInt;
@@ -82,6 +81,11 @@ public class Main {
                         System.out.println("Digite a nova senha");
                         String newKeyword = input.nextLine();
                         admin.setKeyword(newKeyword);
+                    }
+                    else if(gInt == 2){
+                        System.out.println("Qual numero de pessoas que voce deseja?");
+                        int nRoom = input.nextInt();
+                        Quarto.createRoom(nRoom);
                     }
                     else break;
                 }
