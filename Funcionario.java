@@ -1,47 +1,45 @@
-import java.util.ArrayList;
-import java.util.Scanner;
+package hotelpoo2;
 
 public class Funcionario extends Pessoa {
-    private String keyword;
-    private boolean isManager;
-    private static final ArrayList<Funcionario> login = new ArrayList<>();
+    private boolean eGerente = false;
+    private double salario;
+    private String senha;
 
-    public Funcionario(String nome, String CPF, String keyword){
+    public Funcionario(String senha, double salario, String nome, String CPF) {
         super(nome, CPF);
-        setKeyword(keyword);
-        isManager = true;
+        this.salario = salario;
+        this.senha = senha;
     }
+
 
     public Funcionario(String nome, String CPF) {
         super(nome, CPF);
     }
-
-    public boolean promote(Funcionario f) {
-        if (!getIsManager()) return false;
-        Scanner input = new Scanner(System.in);
-        System.out.println("Digite o nome do funcionario: ");
-        String name = input.next();
-        super.setNome(name);
-        System.out.println("Digite o CPF do funcionario: ");
-        String cpf = input.next();
-        super.setCPF(cpf);
-        System.out.println("Digite a senha do funcionario: ");
-        String keyword = input.next();
-        this.setKeyword(keyword);
-        login.add(f);
-        return true;
+    public boolean geteGerente() {
+        return eGerente;
+    }
+    public void seteGerente(boolean eGerente) {
+        this.eGerente = eGerente;
     }
 
-    public String getKeyword() {
-        return keyword;
+    public double getSalario() {
+        return salario;
     }
-    public void setKeyword(String keyword) {
-        this.keyword = keyword;
+
+    public boolean setSalario(double salario) {
+        if(geteGerente()) {
+            this.salario = salario;
+            return true;
+        }
+        else return false;
     }
-    public boolean getIsManager() {
-        return isManager;
+
+    public String getSenha() {
+        return senha;
     }
-    public void setIsManager(boolean isManager) {
-        this.isManager = isManager;
+
+    public void setSenha(String senha) {
+        this.senha = senha;
     }
+    
 }
