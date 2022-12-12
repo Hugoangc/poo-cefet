@@ -1,9 +1,8 @@
-import java.text.ParseException;
-import java.util.Date;
 import java.util.Scanner;
 
 public class Main {
-    public static void main(String[] args) throws ParseException {
+    public static void main(String[] args) {
+        Quarto.createRooms();
         Scanner menu = new Scanner(System.in);
         while (true) {
             System.out.print("##-----------Menu------------##\n");
@@ -30,23 +29,12 @@ public class Main {
                     System.out.println("Digite a quantidade de acompanhantes: ");
                     int guests = input.nextInt();
                     input.nextLine();
-                    System.out.println("Digite o ano desejado: ");
-                    int ano = input.nextInt();
+                    System.out.println("Digite o tempo de estadia: ");
+                    int days = input.nextInt();
                     input.nextLine();
-                    System.out.println("Digite o mes desejado: ");
-                    int mes = input.nextInt();
-                    input.nextLine();
-                    System.out.println("Digite o dia desejado: ");
-                    int dia = input.nextInt();
-                    input.nextLine();
-                    Date d = new Date(ano, mes, dia);
-                    if (Quarto.isAvailable(d)) {
-                        Reserva.makeReserve(Quarto.createRoom(guests), d, guests);
-                        Quarto.getVacancy().add(d);
-                        System.out.println("Reserva criada!\n");
-                    } else {
-                        System.out.println("Indisponivel!\n");
-                    }
+                    Quarto q = Quarto.searchRooms(guests);
+                    if (q == null) { System.out.println("Indisponivel!\n"); }
+                    else { Reserva.makeReserve(q,guests); }
                 }
                 case 2 -> {
                     System.out.print("\nOpção 'Listar Hospedes' Selecionado\n");
@@ -59,6 +47,10 @@ public class Main {
                     String name = input.nextLine();
                     System.out.print("Entre com o CPF: \n");
                     String cpf = input.nextLine();
+                    while (!Pessoa.isCPF(cpf)) {
+                        System.out.print("Entre com um CPF válido: \n");
+                        cpf = input.next();
+                    }
                     Hospede.registerGuest(name, cpf);
                 }
                 case 4 -> Quarto.listRooms();
