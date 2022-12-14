@@ -14,7 +14,7 @@ public class Reserva {
     private static double total;
    
 
-    private Reserva(Quarto q, int numberOfGuests, Hospede h, Date d, int days) {
+    public Reserva(Quarto q, int numberOfGuests, Hospede h, Date d, int days) {
         this.q = q;
         this.numberOfGuests = numberOfGuests;
         this.h = h;
@@ -22,19 +22,6 @@ public class Reserva {
         this.days = days;
         
     }
-
-    public static void makeReserve(Quarto q, Date d, int numberOfGuests, Hospede h, int days) {
-        if (q.getNumberOfGuests() >= numberOfGuests) { // mudanca: +1 dps do numberOfGuests, nao lembro a logica, perguntar a dupla
-            if (q.isVacancy()) {
-                q.setVacancy(false);
-                h.setTotal(days * 50 + 25 * numberOfGuests);
-                q.Occupied(d, days);
-                Reserva r = new Reserva(q, numberOfGuests, h, d, days);
-                Hotel.Reservas.add(r);
-            }
-        }
-    }
-
     public int getNumberOfDays() {
         return numberOfDays;
     }

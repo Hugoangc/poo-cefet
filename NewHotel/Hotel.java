@@ -16,14 +16,23 @@ public class Hotel { // class criada a fins de resolver as coisas por fora, nao 
     
     public Quarto searchRooms(int numberOfGuests, Date d, int days) {
         for (Quarto room : Hotel.rooms) {
-            if (numberOfGuests <= room.getNumberOfGuests() && room.isVacancy() && q.isAvaiable(d, days))
+            if (numberOfGuests <= room.getNumberOfGuests() && q.isAvaiable(d, days))
                 return room;
         }
         return null;
     }    
-
+    public void makeReserve(Quarto q, Date d, int numberOfGuests, Hospede h, int days) {
+        if (q.getNumberOfGuests() >= numberOfGuests+1) { // mudanca: +1 dps do numberOfGuests, nao lembro a logica, perguntar a dupla
+            if (q.isAvaiable(d, days)) {
+                h.setTotal(days * 50 + 25 * numberOfGuests);
+                q.Occupied(d, days);
+                Reserva r = new Reserva(q, numberOfGuests, h, d, days);
+                Hotel.Reservas.add(r);
+            }
+        }
+    }
     public Quarto createRoom(int numberOfGuests) {
-        q = new Quarto(roomCapacity+1, numberOfGuests, true);
+        q = new Quarto(roomCapacity+1, numberOfGuests);
         rooms.add(q);
         roomCapacity++;
         return q;
@@ -49,7 +58,7 @@ public class Hotel { // class criada a fins de resolver as coisas por fora, nao 
         Random rand = new Random();
         for (int i = 0; i < 10; i++) {
             int guests = rand.nextInt(4);
-            Quarto q = new Quarto(i+1, guests+1, true);
+            Quarto q = new Quarto(i+1, guests+1);
             Hotel.rooms.add(q);
             roomCapacity++;
         }

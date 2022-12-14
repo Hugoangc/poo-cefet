@@ -7,18 +7,16 @@ import java.util.Calendar;
 public class Quarto {
     private int roomNumber;
     private int numberOfGuests; // pessoas que o quarto suporta
-    private boolean vacancy;
 
     private ArrayList<Date> notAvaiable = new ArrayList<>();
 
 
-    public Quarto(int roomNumber, int numberOfGuests, boolean vacancy) {
+    public Quarto(int roomNumber, int numberOfGuests) {
         this.roomNumber = roomNumber;
         this.numberOfGuests = numberOfGuests;
-        this.vacancy = vacancy;
     }
 
-    public  boolean isAvaiable(Date d, int days) {
+    public boolean isAvaiable(Date d, int days) {
         Calendar c = Calendar.getInstance();
         for(int i = 1; i <= days; i++){ //vai percorrer os dias que foram passados
             for (int j = 0; j < notAvaiable.size(); j++) { //fazer comparativo com cada dia
@@ -38,15 +36,7 @@ public class Quarto {
         }
         c.setTime(d);
         c.add(Calendar.DATE, 1);
-        //d = c.getTime();
-    }
-
-    public boolean isVacancy() {
-        return vacancy;
-    }
-
-    public void setVacancy(boolean vacancy) {
-        this.vacancy = vacancy;
+        d = c.getTime();
     }
 
     public int getNumberOfGuests() {

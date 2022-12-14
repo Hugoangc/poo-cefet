@@ -59,15 +59,15 @@ public class Main {
 //                        String FuturaData = input.nextLine();
 //                        atual = new SimpleDateFormat("dd/MM/yyyy").parse(FuturaData); 
 //                    }
-                    hotel.searchRooms(guests, atual, days);
-                    if (hotel.q == null) {
+                    Quarto q = hotel.searchRooms(guests, atual, days);
+                    if (q == null) {
                         System.out.println("Indisponivel!\n"); 
                         System.out.println("Cadastro impossibilitado.");
                         break;
                     }
 
                     Hospede aux = Registrar();
-                    Reserva.makeReserve(hotel.q, atual, guests, aux, days);
+                    hotel.makeReserve(q, atual, guests, aux, days);
                     System.out.print("Valor total: ");
                     System.out.println(aux.getTotal());
                     System.out.println("Reserva efetuada");
