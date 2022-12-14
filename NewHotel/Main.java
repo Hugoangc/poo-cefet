@@ -4,6 +4,11 @@ import java.text.SimpleDateFormat;
 import java.util.Date;  
 import java.util.Scanner;
 
+// TODO: - Resolver a variavel vacancy
+//       - Talvez exista erro por conta da java.util.Date, considerar mudar tudo pra Calendar;
+//       - Nao esta mais registrando os hospedes (arruma um erro e aparece 500)
+//       - Apagar os comentarios desnecessarios
+
 
 public class Main {
     public static void main(String[] args){
@@ -37,7 +42,7 @@ public class Main {
                 case 1:{
                     System.out.print("\nOpção 'Nova Reserva' Selecionado\n");
                     Scanner input = new Scanner(System.in);
-                    System.out.println("Deseja reservar para a data atual ou para alguma data especifica?");
+//                    System.out.println("Deseja reservar para a data atual ou para alguma data especifica?");
 //                    System.out.println("1 - Data atual\n" + "2 - Data especifica");
 //                    int DTDecision;
 //                    DTDecision = input.nextInt();
@@ -81,7 +86,7 @@ public class Main {
                     break;
                 }
                 case 4:
-                    Quarto.listRooms();
+                    hotel.listRooms();
                     break; 
                 case 5:
                     {
@@ -91,10 +96,12 @@ public class Main {
                         if(!Funcionario.checkKeyword(keyword, admin.getKeyword())){
                             System.out.println("Senha invalida!\n");
                             break;
-                        }   System.out.print("|-------------------------------|\n");
+                        }
+                        System.out.print("|-------------------------------|\n");
                         System.out.print("| Opção 1 - Mudar senha         |\n");
                         System.out.print("| Opção 2 - Criar Quarto        |\n");
                         System.out.print("| Opção 3 - Mudar nome Hotel    |\n");
+                        System.out.print("| Opção 4 - Listar reservas     |\n");                        
                         System.out.print("| Opção 0 - Sair                |\n");
                         System.out.print("|-------------------------------|\n");
                         int gInt;
@@ -117,7 +124,8 @@ public class Main {
                                 String novoNome;
                                 novoNome = input.nextLine();
                                 hotel.setNome(novoNome);
-                                
+                            case 4:
+                                hotel.listReserves();
                             default:
                                 break OUTER;
                         }

@@ -1,7 +1,5 @@
 package poo_final;
-
-
-public class Funcionario extends Pessoa {
+public class Funcionario extends Pessoa { // AQUI NADA FOI MUDADO
     private String keyword;
     private boolean isManager;
     private double salario;

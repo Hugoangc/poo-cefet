@@ -4,19 +4,19 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.Random;
 
-public class Hotel {
+public class Hotel { // class criada a fins de resolver as coisas por fora, nao precisando focar muito em static
     String nome;
     private int roomCapacity;
     Quarto q;
     static ArrayList<Quarto> rooms = new ArrayList<>(10);
-
+    static ArrayList<Reserva> Reservas = new ArrayList<>(); // fiz so pra listar mesmo
     public Hotel() {
         nome = "CEFET";
     }
     
     public Quarto searchRooms(int numberOfGuests, Date d, int days) {
         for (Quarto room : Hotel.rooms) {
-            if (numberOfGuests == room.getNumberOfGuests() && room.isVacancy() && q.isAvaiable(d, days))
+            if (numberOfGuests <= room.getNumberOfGuests() && room.isVacancy() && q.isAvaiable(d, days))
                 return room;
         }
         return null;
@@ -27,6 +27,22 @@ public class Hotel {
         rooms.add(q);
         roomCapacity++;
         return q;
+    }
+    public static void listReserves(){                         //Ambas as listas trouxe pra ca por mero capricho, podendo leva-las de volta para suas respectivas classes
+        System.out.println("\nReservas ja feitas:");
+        for(Reserva r : Hotel.Reservas){
+            System.out.println(r.getH().getNome());
+            System.out.println("Data: " + r.getDate());
+            System.out.println("Reservado por: " + r.getDays() + " dias.");
+        }
+    }
+    public static void listRooms() {
+        System.out.println("\nQuartos:\n");
+        for (Quarto room : Hotel.rooms) {
+            System.out.println("Quarto: " + room.getRoomNumber());
+            System.out.println("Capacidade do Quarto: " + room.getNumberOfGuests()+" hospedes");
+        }
+        System.out.println("\n");
     }
     
     public void createRooms() {

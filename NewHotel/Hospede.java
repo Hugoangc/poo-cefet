@@ -5,7 +5,7 @@ import java.util.ArrayList;
 
 public class Hospede extends Pessoa {
     private double total;
-    private static ArrayList<Hospede> guests = new ArrayList<Hospede>();
+    private final static ArrayList<Hospede> guests = new ArrayList<>();
 
     private Hospede(String nome, String CPF) {
         super(nome, CPF);
@@ -16,7 +16,7 @@ public class Hospede extends Pessoa {
         guests.add(h);
         return h;
     }
-    public static void removeGuest(Hospede h){
+    public static void removeGuest(Hospede h){ //caso seja necessario, podendo ser excluida antes da entrega
        guests.remove(guests.size()-1);
     }
 

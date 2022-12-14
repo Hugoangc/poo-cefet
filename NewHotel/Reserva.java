@@ -6,25 +6,31 @@ import java.util.Date;
 
 public class Reserva {
     private Quarto q;
+    private Date date; //
+    private int days; // ambos nao sao realmente necessarios
     private int numberOfDays;
     private int numberOfGuests;
     private Hospede h;
     private static double total;
+   
 
-    private Reserva(Quarto q, int numberOfGuests, Hospede h) {
+    private Reserva(Quarto q, int numberOfGuests, Hospede h, Date d, int days) {
         this.q = q;
         this.numberOfGuests = numberOfGuests;
         this.h = h;
+        this.date = d;
+        this.days = days;
+        
     }
 
     public static void makeReserve(Quarto q, Date d, int numberOfGuests, Hospede h, int days) {
-        if (q.getNumberOfGuests() >= numberOfGuests) { // +1 dps do numberOfGuests
+        if (q.getNumberOfGuests() >= numberOfGuests) { // mudanca: +1 dps do numberOfGuests, nao lembro a logica, perguntar a dupla
             if (q.isVacancy()) {
-                Reserva r = new Reserva(q, numberOfGuests, h);
                 q.setVacancy(false);
                 h.setTotal(days * 50 + 25 * numberOfGuests);
-               // Hospede.registerGuest(h.getNome(), h.getCPF());
-               q.Ocupado(d, days);
+                q.Occupied(d, days);
+                Reserva r = new Reserva(q, numberOfGuests, h, d, days);
+                Hotel.Reservas.add(r);
             }
         }
     }
@@ -45,6 +51,14 @@ public class Reserva {
         this.total = total;
     }
 
+    public Hospede getH() {
+        return h;
+    }
+
+    public void setH(Hospede h) {
+        this.h = h;
+    }
+
     public Quarto getQ() {
         return q;
     }
@@ -60,4 +74,21 @@ public class Reserva {
     public void setNumberOfGuests(int numberOfGuests) {
         this.numberOfGuests = numberOfGuests;
     }
+
+    public Date getDate() {
+        return date;
+    }
+
+    public void setDate(Date date) {
+        this.date = date;
+    }
+
+    public int getDays() {
+        return days;
+    }
+
+    public void setDays(int days) {
+        this.days = days;
+    }
+    
 }
