@@ -56,19 +56,10 @@ public class Main {
                         System.out.println("Quantidade invalida!");
                         break;
                     }                    
-                    System.out.println("Deseja reservar para a data atual ou para alguma data especifica?");
-                    System.out.println("1 - Data atual\n" + "2 - Data especifica");
-                    int DTDecision;
-                    DTDecision = input.nextInt();
-                    input.nextLine();
-                    Date atual = new Date();
-                    SimpleDateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");                    
-                    dateFormat.format(atual);
-                    if (DTDecision == 2) {
-                        System.out.println("Digite a data especifica, no formato dd/mm/yyyy");
-                        String FuturaData = input.nextLine();
-                        atual = new SimpleDateFormat("dd/MM/yyyy").parse(FuturaData);
-                    }
+                    Date atual;
+                    System.out.println("Digite a data da reserva, no formato dd/mm/yyyy");
+                    String FuturaData = input.nextLine();
+                    atual = new SimpleDateFormat("dd/MM/yyyy").parse(FuturaData);
                     Quarto q = hotel.searchRooms(guests, atual, days);
                     if (q == null) {
                         System.out.println("Indisponivel!\n");
