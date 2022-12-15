@@ -1,5 +1,6 @@
 package poo_final;
 
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.Random;
@@ -20,7 +21,13 @@ public class Hotel {
                 return room;
         }
         return null;
-    }    
+    }
+    public boolean checkRoom(int numberOfGuests){
+        for(Quarto room : Hotel.rooms){
+            if(numberOfGuests <= room.getNumberOfGuests()) return true;
+        }      
+        return false;
+    }
     public void makeReserve(Quarto q, Date d, int numberOfGuests, Hospede h, int days) {
         if (q.getNumberOfGuests() >= numberOfGuests) {
             if (q.isAvaiable(d, days)) {
@@ -38,7 +45,7 @@ public class Hotel {
         System.out.print("Entre com o CPF do Hospede: \n");
         String cpf = input.nextLine();
         while (!Pessoa.isCPF(cpf)){
-            System.out.print("CPF ja existente ou invalido, tente novamente!\n");
+            System.out.print("CPF invalido, tente novamente!\n");
             cpf = input.nextLine();
         }
         Hospede.registerGuest(name, cpf);
@@ -57,7 +64,8 @@ public class Hotel {
         }           
         for(Reserva r : Hotel.Reservas){
             System.out.println(r.getH().getNome());
-            System.out.println("Data: " + r.getDate());
+            SimpleDateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
+            System.out.println("Data: " + dateFormat.format(r.getDate()));
             System.out.println("Reservado por: " + r.getDays() + " dias.");
             System.out.println("Total: R$"+ r.getH().getTotal());
         }

@@ -12,7 +12,13 @@ public class Hospede extends Pessoa {
         Hospede h = new Hospede(nome, CPF);
         guests.add(h);
     }
-
+    public static Hospede searchH(String CPF){
+        if(guests.isEmpty()) return null;
+        for(Hospede guest : guests){
+            if(guest.getCPF().equals(CPF)) return guest;
+        }
+        return null;
+    }
     public static Hospede lastH(){
         return guests.get(guests.size()-1);
     }
@@ -22,17 +28,6 @@ public class Hospede extends Pessoa {
 
     public void setTotal(double total) {
         this.total = total;
-    }
-    public static boolean cpfExistente(String CPF){
-        if (guests.isEmpty()) {
-            return false;
-        }
-        for(Hospede guest : guests){
-            if(guest.getCPF().equals(CPF)){
-                return true;
-            }
-        }
-        return false;
     }
     public static void listGuests() {
         if (guests.isEmpty()) {
