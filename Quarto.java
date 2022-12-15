@@ -1,59 +1,39 @@
+package poo_final;
 import java.util.ArrayList;
-import java.util.Random;
-
+import java.util.Date;
+import java.util.Calendar;
+        
 public class Quarto {
     private int roomNumber;
-    private int numberOfGuests; // pessoas que o quarto suporta
-    private boolean vacancy;
-    private static int roomCapacity = 0;
-    private static final ArrayList<Quarto> rooms = new ArrayList<>(10);
+    private int numberOfGuests; 
+    private ArrayList<Date> notAvaiable = new ArrayList<>();
 
-    public Quarto(int roomNumber, int numberOfGuests, boolean vacancy) {
+    public Quarto(int roomNumber, int numberOfGuests) {
         this.roomNumber = roomNumber;
         this.numberOfGuests = numberOfGuests;
-        this.vacancy = vacancy;
     }
 
-    public static Quarto createRoom(int numberOfGuests) {
-        Quarto q = new Quarto(roomCapacity+1, numberOfGuests, true);
-        rooms.add(q);
-        roomCapacity++;
-        return q;
-    }
-
-    public static void createRooms() {
-        Random rand = new Random();
-        for (int i = 0; i < 10; i++) {
-            int guests = rand.nextInt(4);
-            Quarto q = new Quarto(i+1, guests+1, true);
-            rooms.add(q);
-            roomCapacity++;
+    public boolean isAvaiable(Date d, int days) {
+        Calendar c = Calendar.getInstance();
+        for(int i = 1; i <= days; i++){ 
+            for (int j = 0; j < notAvaiable.size(); j++) { 
+                if (d.compareTo(notAvaiable.get(j)) == 0)
+                    return false;
         }
-    }
-
-    public static Quarto searchRooms(int numberOfGuests) {
-        for (Quarto room : rooms) {
-            if (numberOfGuests == room.numberOfGuests && room.isVacancy())
-                return room;
+            c.setTime(d);
+            c.add(Calendar.DATE, 1);
+            d = c.getTime();            
         }
-        return null;
+        return true;
     }
-
-    public static void listRooms() {
-        System.out.println("\nQuartos:\n");
-        for (Quarto room : rooms) {
-            System.out.println("Quarto: " + room.roomNumber);
-            System.out.println("Capacidade do Quarto: " + room.numberOfGuests+" hospedes");
+    public void Occupied(Date d, int days){ 
+        Calendar c = Calendar.getInstance();
+        for (int i = 1; i <= days; i++) {
+            notAvaiable.add(d);
+            c.setTime(d);
+            c.add(Calendar.DATE, 1);
+            d = c.getTime();
         }
-        System.out.println("\n");
-    }
-
-    public boolean isVacancy() {
-        return vacancy;
-    }
-
-    public void setVacancy(boolean vacancy) {
-        this.vacancy = vacancy;
     }
 
     public int getNumberOfGuests() {

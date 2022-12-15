@@ -1,9 +1,10 @@
+package poo_final;
 import java.util.ArrayList;
 
 public class Hospede extends Pessoa {
-    static ArrayList<Hospede> guests = new ArrayList<Hospede>();
-
-    private Hospede(String nome, String CPF) {
+    private double total;
+    static ArrayList<Hospede> guests = new ArrayList<>();
+    public Hospede(String nome, String CPF) {
         super(nome, CPF);
     }
 
@@ -12,6 +13,27 @@ public class Hospede extends Pessoa {
         guests.add(h);
     }
 
+    public static Hospede lastH(){
+        return guests.get(guests.size()-1);
+    }
+    public double getTotal() {
+        return total;
+    }
+
+    public void setTotal(double total) {
+        this.total = total;
+    }
+    public static boolean cpfExistente(String CPF){
+        if (guests.isEmpty()) {
+            return false;
+        }
+        for(Hospede guest : guests){
+            if(guest.getCPF().equals(CPF)){
+                return true;
+            }
+        }
+        return false;
+    }
     public static void listGuests() {
         if (guests.isEmpty()) {
             System.out.println("A lista de hospedes esta vazia!\n");

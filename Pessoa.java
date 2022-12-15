@@ -1,3 +1,6 @@
+
+package poo_final;
+
 import java.util.InputMismatchException;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -7,12 +10,9 @@ public abstract class Pessoa {
     private String CPF;
 
     protected Pessoa(String nome, String CPF) {
-        if (!isValidUsername(nome)) this.nome = null;
-        else if (!isCPF(CPF)) this.CPF = null;
-        else {
-            this.nome = nome;
-            this.CPF = CPF;
-        }
+        this.nome = nome;
+        if (!isCPF(CPF)) this.CPF = null;
+        else this.CPF = CPF;
     }
 
     public static boolean isCPF(String CPF) {
@@ -61,17 +61,6 @@ public abstract class Pessoa {
             return (false);
         }
     }
-    
-    public static boolean isValidUsername(String name) {
-        String regex = "^[A-Za-z]\\w{5,29}$";
-        Pattern p = Pattern.compile(regex);
-        if (name == null) {
-            return false;
-        }
-        Matcher m = p.matcher(name);
-        return ((Matcher) m).matches();
-    }
-
     public String getNome() {
         return nome;
     }
