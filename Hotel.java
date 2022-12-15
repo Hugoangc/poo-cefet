@@ -2,6 +2,7 @@ package poo_final;
 
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.Date;
 import java.util.Random;
 import java.util.Scanner;
@@ -37,6 +38,26 @@ public class Hotel {
                 Hotel.Reservas.add(r);
             }
         }
+    }
+    public Reserva searchReserv(String CPF){
+        for(Reserva r : Hotel.Reservas){
+            if(r.getH().getCPF().equals(CPF)){
+                return r;
+            }
+        }
+        return null;
+    } 
+    public void cancelReserve(Reserva r){
+        if(r==null) return;
+        Calendar c = Calendar.getInstance();
+        for(int i = 1; i <= r.getDays();i++){
+            r.getQ().notAvaiable.remove(r.getDate());
+            c.setTime(r.getDate());
+            c.add(Calendar.DATE,1);
+            r.setDate(c.getTime());                    
+        }
+        Hotel.Reservas.remove(r);
+        r.getH().setTotal(0);
     }
     public static void Register(){        
         Scanner input = new Scanner(System.in);

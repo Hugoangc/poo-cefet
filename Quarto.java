@@ -6,7 +6,7 @@ import java.util.Calendar;
 public class Quarto {
     private int roomNumber;
     private int numberOfGuests; 
-    private ArrayList<Date> notAvaiable = new ArrayList<>();
+    protected ArrayList<Date> notAvaiable = new ArrayList<>();
 
     public Quarto(int roomNumber, int numberOfGuests) {
         this.roomNumber = roomNumber;
