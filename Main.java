@@ -38,11 +38,6 @@ public class Main {
             switch (option) {
                 case 1: {
                     System.out.print("\nOpção 'Nova Reserva' Selecionado\n");
-                    System.out.println("Deseja reservar para a data atual ou para alguma data especifica?");
-                    System.out.println("1 - Data atual\n" + "2 - Data especifica");
-                    int DTDecision;
-                    DTDecision = input.nextInt();
-                    input.nextLine();
                     System.out.println("Digite a quantidade de pessoas: ");
                     int guests = input.nextInt();
                     input.nextLine();
@@ -53,6 +48,11 @@ public class Main {
                     System.out.println("Digite o tempo de estadia: ");
                     int days = input.nextInt();
                     input.nextLine();
+                    System.out.println("Deseja reservar para a data atual ou para alguma data especifica?");
+                    System.out.println("1 - Data atual\n" + "2 - Data especifica");
+                    int DTDecision;
+                    DTDecision = input.nextInt();
+                    input.nextLine();                    
                     Date atual = new Date();
                     if(DTDecision == 2){
                         System.out.println("Digite a data especifica, no formato dd/mm/yyyy");

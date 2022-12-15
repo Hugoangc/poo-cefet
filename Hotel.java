@@ -63,11 +63,13 @@ public class Hotel {
             return;        
         }           
         for(Reserva r : Hotel.Reservas){
-            System.out.println(r.getH().getNome());
+            System.out.println("Nome: " + r.getH().getNome());
             SimpleDateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
             System.out.println("Data: " + dateFormat.format(r.getDate()));
+            System.out.println("Reservado para " + r.getNumberOfGuests() + " pessoas.");
             System.out.println("Reservado por: " + r.getDays() + " dias.");
             System.out.println("Total: R$"+ r.getH().getTotal());
+            System.out.print("\n");
         }
     }
     public static void listRooms() {
