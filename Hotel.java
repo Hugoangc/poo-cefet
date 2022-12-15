@@ -11,8 +11,8 @@ public class Hotel {
     protected String nome;
     private int roomCapacity;
     protected Quarto q;
-    static ArrayList<Quarto> rooms = new ArrayList<>(10);
-    static ArrayList<Reserva> Reservas = new ArrayList<>(); 
+    protected static ArrayList<Quarto> rooms = new ArrayList<>(10);
+    protected static ArrayList<Reserva> Reservas = new ArrayList<>(); 
     public Hotel() {
         nome = "CEFET";
     }   
