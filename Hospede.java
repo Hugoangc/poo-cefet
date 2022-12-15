@@ -3,7 +3,7 @@ import java.util.ArrayList;
 
 public class Hospede extends Pessoa {
     private double total;
-    static ArrayList<Hospede> guests = new ArrayList<>();
+    protected static ArrayList<Hospede> guests = new ArrayList<>();
     public Hospede(String nome, String CPF) {
         super(nome, CPF);
     }

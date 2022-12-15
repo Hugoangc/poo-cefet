@@ -8,9 +8,9 @@ import java.util.Random;
 import java.util.Scanner;
 
 public class Hotel { 
-    String nome;
+    protected String nome;
     private int roomCapacity;
-    Quarto q;
+    protected Quarto q;
     static ArrayList<Quarto> rooms = new ArrayList<>(10);
     static ArrayList<Reserva> Reservas = new ArrayList<>(); 
     public Hotel() {

@@ -1,10 +1,5 @@
-
 package poo_final;
-
 import java.util.InputMismatchException;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
-
 public abstract class Pessoa {
     private String nome;
     private String CPF;

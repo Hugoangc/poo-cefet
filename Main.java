@@ -166,7 +166,7 @@ public class Main {
                             if(hotel.searchReserv(CPFcanc) == null){
                                 System.out.println("Reserva nao encontrada!");
                             }
-                            System.out.println("Total: " + hotel.searchReserv(CPFcanc).getTotal());
+                            System.out.println("Total: " + hotel.searchReserv(CPFcanc).getH().getTotal());
                             System.out.println("O pagamento ja foi realizado?");
                             System.out.println("1 - Sim. \n2 - Nao.");
                             int PagR = input.nextInt();
